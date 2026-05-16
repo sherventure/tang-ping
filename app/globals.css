@@ -26,3 +26,42 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-20px) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(100vh) translateX(80px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateX(0px); }
+  50%       { transform: translateX(30px); }
+}
+
+.snowflake {
+  position: fixed;
+  top: -20px;
+  border-radius: 50%;
+  background: white;
+  pointer-events: none;
+  animation: snowfall linear infinite;
+}
+
+.snowflake::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: sway ease-in-out infinite;
+}
